@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import ListSection from "./components/ListSection";
+import TimeSection from "./components/TimeSection";
 
-function App() {
+const App = () => {
+  const getTime = () => {
+    const date = new Date();
+
+    const hours =
+      date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+    const minutes =
+      date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+    const seconds =
+      date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+
+    return { hours, minutes, seconds };
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ListSection getTime={getTime} />
+      <TimeSection getTime={getTime} />
+    </>
   );
-}
+};
 
 export default App;
